@@ -45,11 +45,16 @@ node default {
   
   file { '/etc/motd':
   ensure  => file,
+  noop => true,
   owner   => 'root',
   group   => 'root',
   mode    => '0644',
   content => "Puppet is cool!\n",
 }
 
+ exec {"cowsay 'Welcome to ${::fqdn}!' > /etc/motd" :
+        path => '/usr/local/bin',
+        creates => '/etc/motd'
+  }
   notify { "Hello, my name is ${::hostname}": }
 }
