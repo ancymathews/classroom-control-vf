@@ -48,6 +48,14 @@ node default {
 # include memcached
 # include nginx
 
+user { 'ancy':
+ensure => present,
+}
+class { 'aliases':
+admin => 'admin',
+require => User['ancy'],
+}
+
   class aliases (
   $admin = 'ancy',
   ) {
