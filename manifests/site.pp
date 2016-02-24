@@ -46,10 +46,13 @@ node default {
  # include users
 # include skeleton
 # include memcached
-include nginx
+# include nginx
 
- if $::virtual != 'physical' {
+if $::virtual != 'physical' {
 $vmname = capitalize($::virtual)
 notify { "This is a ${vmname} virtual machine":}
-  notify { "Hello, my name is ${::hostname}": }
+}
+
+notify { "Hello, my name is ${::hostname}": }
+
 }
