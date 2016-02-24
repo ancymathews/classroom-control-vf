@@ -43,31 +43,10 @@ node default {
   # Example:
   #   class { 'my_class': }
   
- include users
+ #include users
 # include skeleton
 # include memcached
 # include nginx
 
-user { 'ancy':
-ensure => present,
-}
-class { 'aliases':
-admin => 'admin',
-require => User['ancy'],
-}
-
-  class aliases (
-  $admin = 'ancy',
-  ) {
-  # uses $admin to build the aliases file
-  file { '/etc/aliases':
-  ensure => file,
-  owner => 'root',
-  group => 'root',
-  mode => '0644',
-  content => template('aliases/aliases.erb'),
-  }
-
-}
-
+notify {'Hi Ancy' :}
 }
