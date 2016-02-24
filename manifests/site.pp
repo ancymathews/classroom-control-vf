@@ -47,26 +47,19 @@ node default {
 # include skeleton
 # include memcached
 # include nginx
-/*
-if $::virtual != 'physical' {
-$vmname = capitalize($::virtual)
-notify { "This is a ${vmname} virtual machine":}
-}
-*/
-class aliases (
-$admin = 'ancy',
-) {
-# uses $admin to build the aliases file
-file { '/etc/aliases':
-ensure => file,
-owner => 'root',
-group => 'root',
-mode => '0644',
-content => template('aliases/aliases.erb'),
-}
+
+  class aliases (
+  $admin = 'ancy',
+  ) {
+  # uses $admin to build the aliases file
+  file { '/etc/aliases':
+  ensure => file,
+  owner => 'root',
+  group => 'root',
+  mode => '0644',
+  content => template('aliases/aliases.erb'),
+  }
 
 }
-
-notify { "Hello, my name is ${::hostname}": }
 
 }
