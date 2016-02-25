@@ -42,10 +42,10 @@ node default {
 # This is where you can declare classes for all nodes.
 # Example:
 # class { 'my_class': }
-# notify { "Hello, my name is ${::hostname}": }
+ notify { "Hello, my name is ${::hostname}": }
 # include users::admins
 #include nginx
 
-$message = hiera('nginx::docroot')
-notify { "$message": }
+#$message = hiera('nginx::docroot')
+#notify { "$message": }
 }
