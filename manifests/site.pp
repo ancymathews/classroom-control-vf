@@ -46,6 +46,6 @@ node default {
 # include users::admins
 include nginx
 
-$message = hiera('message')
+$message = hiera('nginx::docroot')
 notify { "$message": }
 }
