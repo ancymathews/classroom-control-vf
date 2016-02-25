@@ -45,4 +45,6 @@ node default {
 notify { "Hello, my name is ${::hostname}": }
 # include users::admins
 include nginx
+$message = hiera('message')
+notify { $message: }
 }
