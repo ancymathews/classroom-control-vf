@@ -44,7 +44,12 @@ node default {
 # class { 'my_class': }
 # notify { "Hello, my name is ${::hostname}": }
 # include users::admins
-include nginx
+#include nginx
+
+class {"nginx":
+   root => "/etc/nginx/sites",
+}
+
 $message = hiera('message')
 notify { "$message": }
 }
